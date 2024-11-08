@@ -1,0 +1,10 @@
+C:\31231025304\btvn\oop_prj\oop_prj\bin\Debug\oop_prj.exe.config
+C:\31231025304\btvn\oop_prj\oop_prj\bin\Debug\oop_prj.exe
+C:\31231025304\btvn\oop_prj\oop_prj\bin\Debug\oop_prj.pdb
+C:\31231025304\btvn\oop_prj\oop_prj\obj\Debug\oop_prj.csproj.AssemblyReference.cache
+C:\31231025304\btvn\oop_prj\oop_prj\obj\Debug\oop_prj.Properties.Resources.resources
+C:\31231025304\btvn\oop_prj\oop_prj\obj\Debug\oop_prj.csproj.GenerateResource.cache
+C:\31231025304\btvn\oop_prj\oop_prj\obj\Debug\oop_prj.csproj.CoreCompileInputs.cache
+C:\31231025304\btvn\oop_prj\oop_prj\obj\Debug\oop_prj.exe
+C:\31231025304\btvn\oop_prj\oop_prj\obj\Debug\oop_prj.pdb
+C:\31231025304\btvn\oop_prj\oop_prj\obj\Debug\WindowsFormsApp2.MainForm.resources
