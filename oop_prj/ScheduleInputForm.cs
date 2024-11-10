@@ -1,5 +1,5 @@
-﻿using System;
 using System.Windows.Forms;
+using System;
 
 namespace WindowsFormsApp2
 {
@@ -10,7 +10,6 @@ namespace WindowsFormsApp2
         private DateTimePicker dateTimePickerEnd;
         private Button buttonOK;
         private Button buttonCancel;
-
         private Schedule schedule;
 
         public ScheduleInputForm()
@@ -35,47 +34,35 @@ namespace WindowsFormsApp2
             this.buttonOK = new Button();
             this.buttonCancel = new Button();
 
-            // 
             // textBoxName
-            // 
             this.textBoxName.Location = new System.Drawing.Point(12, 12);
             this.textBoxName.Size = new System.Drawing.Size(260, 20);
             this.textBoxName.Enter += new EventHandler(TextBoxName_Enter);
             this.textBoxName.Leave += new EventHandler(TextBoxName_Leave);
 
-            // 
             // dateTimePickerStart
-            // 
             this.dateTimePickerStart.Location = new System.Drawing.Point(12, 38);
             this.dateTimePickerStart.Size = new System.Drawing.Size(260, 20);
             this.dateTimePickerStart.Format = DateTimePickerFormat.Custom;
             this.dateTimePickerStart.CustomFormat = "dd/MM/yyyy HH:mm";
 
-            // 
             // dateTimePickerEnd
-            // 
             this.dateTimePickerEnd.Location = new System.Drawing.Point(12, 64);
             this.dateTimePickerEnd.Size = new System.Drawing.Size(260, 20);
             this.dateTimePickerEnd.Format = DateTimePickerFormat.Custom;
             this.dateTimePickerEnd.CustomFormat = "dd/MM/yyyy HH:mm";
 
-            // 
             // buttonOK
-            // 
             this.buttonOK.Text = "OK";
             this.buttonOK.Location = new System.Drawing.Point(12, 90);
             this.buttonOK.Click += new EventHandler(this.ButtonOK_Click);
 
-            // 
             // buttonCancel
-            // 
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.Location = new System.Drawing.Point(100, 90);
             this.buttonCancel.Click += new EventHandler(this.ButtonCancel_Click);
 
-            // 
             // ScheduleInputForm
-            // 
             this.ClientSize = new System.Drawing.Size(284, 121);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.dateTimePickerStart);
@@ -102,7 +89,7 @@ namespace WindowsFormsApp2
 
         private void TextBoxName_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxName.Text)) // Sửa lỗi ở đây
+            if (string.IsNullOrWhiteSpace(textBoxName.Text))
             {
                 SetPlaceholderText();
             }
@@ -110,6 +97,19 @@ namespace WindowsFormsApp2
 
         private void ButtonOK_Click(object sender, EventArgs e)
         {
+            // Xử lý ngoại lệ cho ngày bắt đầu và ngày kết thúc
+            if (dateTimePickerStart.Value < DateTime.Now)
+            {
+                MessageBox.Show("Ngày bắt đầu không thể là ngày trong quá khứ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dateTimePickerEnd.Value < dateTimePickerStart.Value)
+            {
+                MessageBox.Show("Ngày kết thúc không thể trước ngày bắt đầu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (schedule == null)
             {
                 schedule = new Schedule
@@ -125,7 +125,6 @@ namespace WindowsFormsApp2
                 schedule.StartTime = dateTimePickerStart.Value;
                 schedule.EndTime = dateTimePickerEnd.Value;
             }
-
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
